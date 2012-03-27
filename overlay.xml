@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "repositories.dtd">
+<repositories xmlns="" version="1.0">
+	<repo quality="experimental" status="unofficial">
+		<name>maya</name>
+		<description>maya 2012 in gentoo</description>
+		<homepage>https://github.com/etu/maya-overlay</homepage>
+		<owner type="project">
+			<email>etu@failar.nu</email>
+			<name>Etu</name>
+		</owner>
+		<source type="git">git://github.com/etu/maya-overlay.git</source>
+		<feed>https://github.com/etu/maya-overlay/commits/master.atom</feed>
+	</repo>
+</repositories>

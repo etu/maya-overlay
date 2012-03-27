@@ -1,0 +1,12 @@
+
+* What is this?
+
+I made an ebuild for Maya 2012 for Gentoo, it's quite ugly but it seems to work for me. Please tell me if you got problems. Please fork me to fix stuff.
+
+
+* How to add it to my system?
+
+Merge layman, edit the file: /etc/layman/layman.cfg
+
+And add "https://github.com/etu/maya-overlay/raw/master/overlay.xml" to the "overlays" part.
+
