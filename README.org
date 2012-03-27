@@ -4,8 +4,8 @@ I made an ebuild for Maya 2012 for Gentoo, it's quite ugly but it seems to work 
 ebuild will tell you the details after the install...
 
 * How to add it to my system?
-Merge layman, edit the file: /etc/layman/layman.cfg and add "https://github.com/etu/maya-overlay/raw/master/overlay.xml" to the "overlays" part.
+Merge layman, edit the file: /etc/layman/layman.cfg and add "[[https://github.com/etu/maya-overlay/raw/master/overlay.xml][https://github.com/etu/maya-overlay/raw/master/overlay.xml]]" to the "overlays" part.
 
 * Resources
-  - The ebuild in this repo is based on this ebuild: http://archives.gentoo.org/gentoo-user/msg_2dc5637ce376fdd585cb0f208e7073b8.xml
-  - A blogpost about maya 2010 network licensing usage: http://baltazaar.wordpress.com/2009/11/18/network-licensing-maya-2010-on-the-linux-client/
+  - The ebuild in this repo is based on this ebuild: [[http://archives.gentoo.org/gentoo-user/msg_2dc5637ce376fdd585cb0f208e7073b8.xml][http://archives.gentoo.org/gentoo-user/msg_2dc5637ce376fdd585cb0f208e7073b8.xml]]
+  - A blogpost about maya 2010 network licensing usage: [[http://baltazaar.wordpress.com/2009/11/18/network-licensing-maya-2010-on-the-linux-client/][http://baltazaar.wordpress.com/2009/11/18/network-licensing-maya-2010-on-the-linux-client/]]
