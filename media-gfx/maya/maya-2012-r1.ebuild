@@ -23,7 +23,8 @@ DEPEND="app-arch/rpm2targz app-arch/tar"
 # Stuff I *know* maya depends on
 RDEPEND="app-shells/tcsh
 	media-libs/libpng:1.2
-	dev-lang/python"
+	dev-lang/python
+	app-arch/rpm2targz"
 
 # Stuff I'm not sure about
 RDEPEND="${RDEPEND}
@@ -50,16 +51,16 @@ src_unpack() {
 	unpack ${A}
 
 	# Unpack of RPM files
-	rpm2cpio adlmapps4-4.0.35-0.x86_64.rpm | cpio -idmvu
+	rpm2tar adlmapps4-4.0.35-0.x86_64.rpm -O | tar -x
 	assert "Failed to unpack adlmapps4-4.0.35-0.x86_64.rpm"
 
-	rpm2cpio adlmflexnetclient-4.0.35-0.x86_64.rpm | cpio -idmvu
+	rpm2tar adlmflexnetclient-4.0.35-0.x86_64.rpm -O | tar -x
 	assert "Failed to unpack adlmflexnetclient-4.0.35-0.x86_64.rpm"
 
-#	rpm2cpio adlmflexnetserver-4.0.35-0.x86_64.rpm | cpio -idmvu
+#	rpm2tar adlmflexnetserver-4.0.35-0.x86_64.rpm -O | tar -x
 #	assert "Failed to adlmflexnetserver-4.0.35-0.x86_64.rpm"
 
-	rpm2cpio Maya2012_0_64-2012.0-499.x86_64.rpm | cpio -idmvu
+	rpm2tar Maya2012_0_64-2012.0-499.x86_64.rpm -O | tar -x
 	assert "Failed to unpack Maya2012_0_64-2012.0-499.x86_64.rpm"
 }
 
