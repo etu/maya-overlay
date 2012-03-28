@@ -23,8 +23,7 @@ DEPEND="app-arch/rpm2targz app-arch/tar"
 # Stuff I *know* maya depends on
 RDEPEND="app-shells/tcsh
 	media-libs/libpng:1.2
-	dev-lang/python
-	app-arch/rpm2targz"
+	dev-lang/python"
 
 # Stuff I'm not sure about
 RDEPEND="${RDEPEND}
@@ -44,7 +43,7 @@ RDEPEND="${RDEPEND}
 MAYADIR="/opt/Autodesk"
 
 pkg_nofetch() {
-	einfo "This ebuild expects that you place the file ${SRC_URI} in ${DISTDIR}"
+	einfo "This ebuild expects that you place the file ${SRC_URI} in /usr/portage/distfiles"
 }
 
 src_unpack() {
@@ -68,15 +67,13 @@ src_install() {
 	# Copy the unpacked things to to the build directory
 	cp -pPR ./usr ./var ./opt ${D} || die
 
-	# Create some directories might be missing
-	mkdir -p ${D}usr/lib64/
-	mkdir -p ${D}usr/bin/
-
 	# Linking party! \:D/
+	mkdir -p ${D}usr/lib64/
 	ln -s libtiff.so   ${D}usr/lib64/libtiff.so.3
 	ln -s libssl.so    ${D}usr/lib64/libssl.so.6
 	ln -s libcrypto.so ${D}usr/lib64/libcrypto.so.6
 
+	mkdir -p ${D}usr/bin/
 	ln -s /usr/autodesk/maya2012-x64/bin/maya2012 ${D}usr/bin/maya
 	ln -s /usr/autodesk/maya2012-x64/bin/Render   ${D}usr/bin/Render
 	ln -s /usr/autodesk/maya2012-x64/bin/fcheck   ${D}usr/bin/fcheck
@@ -85,6 +82,8 @@ src_install() {
 	ln -s maya2012-x64 ${D}usr/autodesk/maya
 
 	# For those of you who want an icon
+	mkdir -p ${D}usr/share/applications/
+	mkdir -p ${D}usr/share/icons/hicolor/48x48/apps/
 	ln -s /usr/autodesk/maya2012-x64/desktop/Autodesk-Maya.desktop ${D}usr/share/applications/Autodesk-Maya.desktop
 	ln -s /usr/autodesk/maya2012-x64/desktop/Maya.png              ${D}usr/share/icons/hicolor/48x48/apps/Maya.png
 
@@ -111,12 +110,12 @@ pkg_postinst() {
 	einfo
 	einfo
 	einfo "If you have a network license you need to do this:"
-	einfo " \$ echo 'SERVER <servername> 0' >  /var/flexlm/maya.lic"
-	einfo " \$ echo 'USE_SERVER'            >> /var/flexlm/maya.lic"
+	einfo " # echo 'SERVER <servername> 0' >  /var/flexlm/maya.lic"
+	einfo " # echo 'USE_SERVER'            >> /var/flexlm/maya.lic"
 	einfo
 	einfo
 	einfo "You might need to run the setup as root by hand even after this to make things work..."
-	einfo " # mkdir ~/maya; cd ~/maya; cp ${DISTDIR}${SRC_URI} .; tar -xf ${SRC_URI}; ./setup; cd ~; rm -rf ~/maya"
+	einfo " # mkdir ~/maya; cd ~/maya; cp /usr/portage/distfiles/${SRC_URI} .; tar -xf ${SRC_URI}; ./setup; cd ~; rm -rf ~/maya"
 	einfo "It *does not matter* if the rpm install fails, it alter files somewhere that makes licenses to work."
 	einfo
 	einfo
