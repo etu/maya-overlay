@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: Maya-2012 for amd64$
 
-inherit rpm eutils versionator
+inherit rpm eutils
 
 EAPI="4"
 IUSE="bundled-libs openmotif"
@@ -11,22 +11,25 @@ S="${WORKDIR}"
 
 DESCRIPTION="Autodesk's Maya. Commercial modeling and animation package"
 HOMEPAGE="http://usa.autodesk.com/maya/"
-
 SRC_URI="autodesk_maya_2012_english_linux_64bit2.tgz"
-
 RESTRICT="fetch nouserpriv"
 SLOT="2012"
-
 LICENSE="maya-12.0"
-
 KEYWORDS="~amd64"
 
+# Needed for install
 DEPEND="app-arch/rpm2targz app-arch/tar"
+
+# Stuff I *know* maya depends on
 RDEPEND="app-shells/tcsh
-			x11-libs/libxcb app-admin/gamin dev-libs/libgamin
-			media-libs/libquicktime dev-lang/python media-libs/audiofile
-			sys-libs/e2fsprogs-libs media-libs/openal
-			media-libs/libpng:1.2
+	media-libs/libpng:1.2
+	dev-lang/python"
+
+# Stuff I'm not sure about
+RDEPEND="${RDEPEND}
+	x11-libs/libxcb app-admin/gamin dev-libs/libgamin
+	media-libs/libquicktime media-libs/audiofile
+	sys-libs/e2fsprogs-libs media-libs/openal
 
 	amd64? (
 		!bundled-libs? ( x11-libs/libXpm x11-libs/libXmu x11-libs/libXt
@@ -40,13 +43,13 @@ RDEPEND="app-shells/tcsh
 MAYADIR="/opt/Autodesk"
 
 pkg_nofetch() {
-	einfo "This ebuild expects your files to be placed in ${DISTDIR}:"
+	einfo "This ebuild expects that you place the file ${SRC_URI} in ${DISTDIR}"
 }
 
 src_unpack() {
 	unpack ${A}
 
-	# Begin the mass rpm conversion/unpacking
+	# Unpack of RPM files
 	rpm2cpio adlmapps4-4.0.35-0.x86_64.rpm | cpio -idmvu
 	assert "Failed to unpack adlmapps4-4.0.35-0.x86_64.rpm"
 
@@ -61,32 +64,28 @@ src_unpack() {
 }
 
 src_install() {
-	# Remove all crap
-	rm ./*
-	rm -r ./EULA
+	# Copy the unpacked things to to the build directory
+	cp -pPR ./usr ./var ./opt ${D} || die
 
-	# Copy the stuff to the build directory
-	cp -pPR . ${D} || die
+	# Create some directories might be missing
 	mkdir -p ${D}usr/lib64/
-	mkdir -p ${D}usr/local/bin/
+	mkdir -p ${D}usr/bin/
 
-	# Now let's get the linking party on the road.
+	# Linking party! \:D/
 	ln -s libtiff.so   ${D}usr/lib64/libtiff.so.3
 	ln -s libssl.so    ${D}usr/lib64/libssl.so.6
 	ln -s libcrypto.so ${D}usr/lib64/libcrypto.so.6
 
-	ln -s /usr/autodesk/maya2012-x64/bin/maya2012 ${D}usr/local/bin/maya
-	ln -s /usr/autodesk/maya2012-x64/bin/Render   ${D}usr/local/bin/Render
-	ln -s /usr/autodesk/maya2012-x64/bin/fcheck   ${D}usr/local/bin/fcheck
-	ln -s /usr/autodesk/maya2012-x64/bin/imgcvt   ${D}usr/local/bin/imgcvt
+	ln -s /usr/autodesk/maya2012-x64/bin/maya2012 ${D}usr/bin/maya
+	ln -s /usr/autodesk/maya2012-x64/bin/Render   ${D}usr/bin/Render
+	ln -s /usr/autodesk/maya2012-x64/bin/fcheck   ${D}usr/bin/fcheck
+	ln -s /usr/autodesk/maya2012-x64/bin/imgcvt   ${D}usr/bin/imgcvt
 
 	ln -s maya2012-x64 ${D}usr/autodesk/maya
 
 	# For those of you who want an icon
-	ln -sf ${D}usr/autodesk/maya2012-x64/desktop/Autodesk-Maya.desktop
-	${D}usr/share/applications/Autodesk-Maya.desktop
-	ln -sf ${D}usr/autodesk/maya2012-x64/desktop/Maya.png
-	${D}usr/share/icons/hicolor/48x48/apps/Maya.png
+	ln -s /usr/autodesk/maya2012-x64/desktop/Autodesk-Maya.desktop ${D}usr/share/applications/Autodesk-Maya.desktop
+	ln -s /usr/autodesk/maya2012-x64/desktop/Maya.png              ${D}usr/share/icons/hicolor/48x48/apps/Maya.png
 
 	# Flex License Management needs this folder to work
 	mkdir -p ${D}var/flexlm/
