@@ -13,7 +13,7 @@ So it looks like this...
 
 And then just...
 :# layman -L
-:# layman -a aidstu
+:# layman -a maya
 
 And make sure to have this at the end of your /etc/make.conf:
 :# source /var/lib/layman/make.conf
