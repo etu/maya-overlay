@@ -1,10 +1,22 @@
-
 * What is this?
 I made an ebuild for Maya 2012 for Gentoo, it's quite ugly but it seems to work for me. Please tell me if you got problems. Please fork me to fix stuff. You still need to run the graphical installer to make stuff work, I'm not sure about what happens there yet... The 
 ebuild will tell you the details after the install...
 
 * How to add it to my system?
-Merge layman, edit the file: /etc/layman/layman.cfg and add "[[https://github.com/etu/maya-overlay/raw/master/overlay.xml][https://github.com/etu/maya-overlay/raw/master/overlay.xml]]" to the "overlays" part.
+Merge layman (with git enabled ofc), edit the file: =/etc/layman/layman.cfg=
+
+And add =[[https://github.com/etu/maya-overlay/raw/master/overlay.xml][https://github.com/etu/maya-overlay/raw/master/overlay.xml]]= to the =overlays:= part.
+
+So it looks like this...
+:overlays  : http://www.gentoo.org/proj/en/overlays/repositories.xml
+:	[[https://github.com/etu/maya-overlay/raw/master/overlay.xml][https://github.com/etu/maya-overlay/raw/master/overlay.xml]]
+
+And then just...
+:# layman -L
+:# layman -a aidstu
+
+And make sure to have this at the end of your /etc/make.conf:
+:# source /var/lib/layman/make.conf
 
 * Resources
   - The ebuild in this repo is based on this ebuild: [[http://archives.gentoo.org/gentoo-user/msg_2dc5637ce376fdd585cb0f208e7073b8.xml][http://archives.gentoo.org/gentoo-user/msg_2dc5637ce376fdd585cb0f208e7073b8.xml]]
