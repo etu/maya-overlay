@@ -5,11 +5,11 @@ ebuild will tell you the details after the install...
 * How to add it to my system?
 Merge layman (with git enabled ofc), edit the file: =/etc/layman/layman.cfg=
 
-And add =[[https://github.com/etu/maya-overlay/raw/master/overlay.xml][https://github.com/etu/maya-overlay/raw/master/overlay.xml]]= to the =overlays:= part.
+And add =https://github.com/etu/maya-overlay/raw/master/overlay.xml= to the =overlays:= part.
 
 So it looks like this...
 :overlays  : http://www.gentoo.org/proj/en/overlays/repositories.xml
-:	[[https://github.com/etu/maya-overlay/raw/master/overlay.xml][https://github.com/etu/maya-overlay/raw/master/overlay.xml]]
+:	https://github.com/etu/maya-overlay/raw/master/overlay.xml
 
 And then just...
 :# layman -L
