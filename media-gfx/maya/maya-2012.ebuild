@@ -7,14 +7,16 @@ inherit rpm eutils
 
 DESCRIPTION="Autodesk's Maya. Commercial modeling and animation package"
 HOMEPAGE="http://usa.autodesk.com/maya/"
-SRC_URI="autodesk_maya_2012_english_linux_64bit2.tgz"
+#SRC_URI="autodesk_maya_2012_english_linux_64bit2.tgz"
+SRC_URI="http://images.autodesk.com/adsk/files/autodesk_maya_2012_english_linux_64bit2.tgz"
 
 LICENSE="maya-12.0"
 SLOT="2012"
 KEYWORDS="~amd64"
 IUSE="bundled-libs openmotif"
 
-RESTRICT="fetch nouserpriv"
+#RESTRICT="fetch nouserpriv"
+RESTRICT="mirror nouserpriv"
 
 # Needed for install
 DEPEND="app-arch/rpm2targz app-arch/tar"
