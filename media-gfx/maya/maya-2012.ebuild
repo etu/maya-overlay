@@ -127,7 +127,7 @@ pkg_postinst() {
 	einfo
 	einfo
 	einfo "You might need to run the setup as root by hand even after this to make license things work..."
-	einfo " # mkdir ~/maya; cd ~/maya; cp /usr/portage/distfiles/${SRC_URI} .; tar -xf ${SRC_URI}; ./setup; cd ~; rm -rf ~/maya"
+	einfo " # mkdir ~/maya; cd ~/maya; cp /usr/portage/distfiles/autodesk_maya_2012_english_linux_64bit2.tgz .; tar -xf autodesk_maya_2012_english_linux_64bit2.tgz; ./setup; cd ~; rm -rf ~/maya"
 	einfo "It *seems to not matter* if the rpm install fails, it alter files somewhere that makes licenses to work. Correct me on this?"
 	einfo
 	einfo
