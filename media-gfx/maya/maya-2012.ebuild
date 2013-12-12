@@ -29,7 +29,8 @@ RDEPEND="app-shells/tcsh
 	x11-libs/libXrender
 	media-libs/fontconfig
 	|| ( media-libs/libjpeg-turbo media-libs/jpeg:62 )
-	media-libs/glu"
+	media-libs/glu
+	app-emulation/emul-linux-x86-gtklibs"
 
 # The ./setup program needs these two libs to work
 RDEPEND="${RDEPEND} x11-libs/libXrandr x11-libs/libXft"
@@ -42,13 +43,10 @@ RDEPEND="${RDEPEND}
 	sys-libs/e2fsprogs-libs media-libs/openal
 
 	amd64? (
-		!bundled-libs? ( x11-libs/libXpm x11-libs/libXmu x11-libs/libXt
-			x11-libs/libXp x11-libs/libXi x11-libs/libXext x11-libs/libX11
-			x11-libs/libXau x11-libs/libxcb )
-		bundled-libs? (	app-emulation/emul-linux-x86-xlibs )
-			bundled-libs? ( app-emulation/emul-linux-x86-baselibs )
-			bundled-libs? (	app-emulation/emul-linux-x86-qtlibs )
-			openmotif? ( x11-libs/openmotif ) ) "
+		!bundled-libs? ( x11-libs/libXpm x11-libs/libXmu x11-libs/libXt x11-libs/libXp x11-libs/libXi x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libxcb )
+		bundled-libs? (	app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-baselibs app-emulation/emul-linux-x86-qtlibs )
+		openmotif? ( x11-libs/openmotif )
+	)"
 
 S="${WORKDIR}"
 
