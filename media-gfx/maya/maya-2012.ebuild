@@ -30,7 +30,7 @@ RDEPEND="app-shells/tcsh
 	media-libs/fontconfig
 	|| ( media-libs/libjpeg-turbo media-libs/jpeg:62 )
 	media-libs/glu
-	app-emulation/emul-linux-x86-gtklibs"
+	amd64? ( app-emulation/emul-linux-x86-gtklibs )"
 
 # The ./setup program needs these two libs to work
 RDEPEND="${RDEPEND} x11-libs/libXrandr x11-libs/libXft"
@@ -44,7 +44,7 @@ RDEPEND="${RDEPEND}
 
 	amd64? (
 		!bundled-libs? ( x11-libs/libXpm x11-libs/libXmu x11-libs/libXt x11-libs/libXp x11-libs/libXi x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libxcb )
-		bundled-libs? (	app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-baselibs app-emulation/emul-linux-x86-qtlibs )
+		bundled-libs? ( app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-baselibs app-emulation/emul-linux-x86-qtlibs )
 		openmotif? ( x11-libs/openmotif )
 	)"
 
