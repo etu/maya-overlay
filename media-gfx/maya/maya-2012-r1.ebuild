@@ -28,9 +28,10 @@ RDEPEND="app-shells/tcsh
 	x11-libs/libXinerama
 	x11-libs/libXrender
 	media-libs/fontconfig
-	|| ( media-libs/libjpeg-turbo media-libs/jpeg:62 )
 	media-libs/glu
-	amd64? ( app-emulation/emul-linux-x86-gtklibs )"
+	amd64? ( app-emulation/emul-linux-x86-gtklibs )
+	virtual/jpeg:62
+"
 
 # The ./setup program needs these two libs to work
 RDEPEND="${RDEPEND} x11-libs/libXrandr x11-libs/libXft"
@@ -80,7 +81,6 @@ src_install() {
 	ln -s libtiff.so    ${D}usr/lib/libtiff.so.3
 	ln -s libssl.so     ${D}usr/lib64/libssl.so.6
 	ln -s libcrypto.so  ${D}usr/lib64/libcrypto.so.6
-	# [ -e /usr/lib64/libjpeg.so.62 ] || ln -s libjpeg.so ${D}usr/lib64/libjpeg.so.62
 	ln -s libGLU.so.1.3 ${D}usr/autodesk/maya2012-x64/lib/libGLU.so.1 # If the systemwide libGLU isn't present, maya has it's own
 
 	mkdir -p ${D}usr/bin/
