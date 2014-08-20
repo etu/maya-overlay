@@ -22,7 +22,8 @@ And then just...
 And make sure to have this at the end of your /etc/make.conf:
 : # source /var/lib/layman/make.conf
 
-Or if you just need to use it quick, do it this way: =# layman -f -a maya -o https://raw.github.com/etu/maya-overlay/master/overlay.xml=
+Or if you just need to use it quick, do it this way: 
+: # layman -f -a maya -o https://raw.github.com/etu/maya-overlay/master/overlay.xml
 
 * Resources
   - The ebuild in this repo is based on this ebuild: [[http://archives.gentoo.org/gentoo-user/msg_2dc5637ce376fdd585cb0f208e7073b8.xml][http://archives.gentoo.org/gentoo-user/msg_2dc5637ce376fdd585cb0f208e7073b8.xml]]
