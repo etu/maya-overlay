@@ -1,3 +1,7 @@
+* THIS REPO IS ABANDONED:
+
+I created this repo since I needed to run Maya 2012 at work. But I've switched job a while back. And since then, this repo is dead. I won't accept any patches anymore. If you fork and start maintaning somewhere else, tell (bug report or whatever) me and I'll put a link here to your repo.
+
 * What is this?
 I made an ebuild for Maya 2012 for Gentoo, it's quite ugly but it seems to work for me. Please tell me if you got problems. Please fork me to fix stuff. You still need to run the graphical installer to make stuff work, I'm not sure about what happens there yet... The 
 ebuild will tell you the details after the install...
